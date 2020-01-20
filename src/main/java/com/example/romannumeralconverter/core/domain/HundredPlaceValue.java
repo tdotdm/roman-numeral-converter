@@ -11,4 +11,9 @@ public class HundredPlaceValue extends PlaceValue {
 
         return new HundredPlaceValue(integerPlaceValue);
     }
+
+    @Override
+    public String getRomanNumeral() {
+        return null;
+    }
 }

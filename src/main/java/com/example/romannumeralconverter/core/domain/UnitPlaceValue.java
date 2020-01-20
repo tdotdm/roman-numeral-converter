@@ -11,4 +11,9 @@ public class UnitPlaceValue extends PlaceValue {
 
         return new UnitPlaceValue(integerPlaceValue);
     }
+
+    @Override
+    public String getRomanNumeral() {
+        return null;
+    }
 }

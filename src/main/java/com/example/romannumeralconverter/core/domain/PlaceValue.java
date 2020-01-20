@@ -9,4 +9,6 @@ public abstract class PlaceValue {
         this.rank = rank;
         this.value = value;
     }
+
+    abstract String getRomanNumeral();
 }
