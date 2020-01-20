@@ -10,14 +10,14 @@ import java.util.Optional;
 public class UserInputFormatter {
     private static final String LEADING_ZEROES = "^0+(?!$)";
 
-    public Optional<String> format(final String numeral) {
-        if (numeral.isEmpty()) {
+    public Optional<String> format(final String userInput) {
+        if (userInput == null || userInput.isBlank()) {
             log.error("No valid User Input to format.");
             return Optional.empty();
         }
 
         log.info("Formatting User Input.");
-        final String formattedUserInput = numeral.replaceFirst(LEADING_ZEROES, "");
+        final String formattedUserInput = userInput.replaceFirst(LEADING_ZEROES, "");
         return Optional.of(formattedUserInput);
     }
 }
