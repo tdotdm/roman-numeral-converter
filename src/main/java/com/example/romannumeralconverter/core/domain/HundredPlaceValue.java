@@ -5,7 +5,7 @@ public class HundredPlaceValue extends PlaceValue {
         super(Rank.HUNDRED, value);
     }
 
-    public static PlaceValue from(final Integer numberToConvert) {
+    public static HundredPlaceValue from(final Integer numberToConvert) {
         final double placeValue = Math.floor(numberToConvert / 100 % 10);
         final int integerPlaceValue = (int) placeValue;
 

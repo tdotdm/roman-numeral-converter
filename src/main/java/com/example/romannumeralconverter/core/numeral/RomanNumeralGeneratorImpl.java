@@ -17,22 +17,22 @@ public class RomanNumeralGeneratorImpl implements RomanNumeralGenerator {
         final List<PlaceValue> placeValues = new ArrayList<>();
         final int numberLength = String.valueOf(number).length();
         if (numberLength > 3) {
-            final PlaceValue placeValue = ThousandPlaceValue.from(number);
+            final ThousandPlaceValue placeValue = ThousandPlaceValue.from(number);
             placeValues.add(placeValue);
         }
 
         if (numberLength > 2) {
-            final PlaceValue placeValue = HundredPlaceValue.from(number);
+            final HundredPlaceValue placeValue = HundredPlaceValue.from(number);
             placeValues.add(placeValue);
         }
 
         if (numberLength > 1) {
-            final PlaceValue placeValue = TenPlaceValue.from(number);
+            final TenPlaceValue placeValue = TenPlaceValue.from(number);
             placeValues.add(placeValue);
         }
 
         if (numberLength > 0) {
-            final PlaceValue placeValue = UnitPlaceValue.from(number);
+            final UnitPlaceValue placeValue = UnitPlaceValue.from(number);
             placeValues.add(placeValue);
         }
 
