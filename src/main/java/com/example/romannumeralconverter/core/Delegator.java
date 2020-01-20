@@ -3,7 +3,7 @@ package com.example.romannumeralconverter.core;
 import com.example.romannumeralconverter.core.numeral.NumberValidator;
 import com.example.romannumeralconverter.core.numeral.RomanNumeralGenerator;
 import com.example.romannumeralconverter.core.numeral.RomanNumeralPrinter;
-import com.example.romannumeralconverter.core.numeral.StringNumeralToIntegerNumeralConverter;
+import com.example.romannumeralconverter.core.numeral.StringToIntegerConverter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -14,13 +14,13 @@ import java.util.Optional;
 @Slf4j
 @RequiredArgsConstructor
 public class Delegator {
-    private final StringNumeralToIntegerNumeralConverter stringNumeralToIntegerNumeralConverter;
+    private final StringToIntegerConverter stringToIntegerConverter;
     private final NumberValidator numberValidator;
     private final RomanNumeralGenerator romanNumeralGenerator;
     private final RomanNumeralPrinter romanNumeralPrinter;
 
     public void delegate(final String userInput) {
-        final Optional<Integer> optionalNumberToConvert = stringNumeralToIntegerNumeralConverter.convert(userInput);
+        final Optional<Integer> optionalNumberToConvert = stringToIntegerConverter.convert(userInput);
         if (optionalNumberToConvert.isPresent()) {
             final Integer numberToConvert = optionalNumberToConvert.get();
             final boolean numberIsValid = numberValidator.numberIsValid(numberToConvert);
