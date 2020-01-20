@@ -1,10 +1,7 @@
 package com.example.romannumeralconverter.core;
 
 import com.example.romannumeralconverter.core.configuration.ApplicationProperties;
-import com.example.romannumeralconverter.core.numeral.NumeralValidator;
-import com.example.romannumeralconverter.core.numeral.RomanNumeralGenerator;
-import com.example.romannumeralconverter.core.numeral.StringNumeralToIntegerNumeralConverter;
-import com.example.romannumeralconverter.core.numeral.UserInputFormatter;
+import com.example.romannumeralconverter.core.numeral.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
@@ -21,28 +18,31 @@ public class StartupListener implements CommandLineRunner {
     private final StringNumeralToIntegerNumeralConverter stringNumeralToIntegerNumeralConverter;
     private final NumeralValidator numeralValidator;
     private final RomanNumeralGenerator romanNumeralGenerator;
+    private final RomanNumeralResultPrinter romanNumeralResultPrinter;
 
     @Override
     public void run(final String... args) {
         final String numberToConvert = applicationProperties.getNumberToConvert();
-        final String formattedNumberToConvert = userInputFormatter.format(numberToConvert);
-        final Optional<Integer> optionalNumeral = stringNumeralToIntegerNumeralConverter.convert(formattedNumberToConvert);
+        final Optional<String> optionalFormattedUserInput = userInputFormatter.format(numberToConvert);
+        if (optionalFormattedUserInput.isPresent()) {
+            final String formattedUserInput = optionalFormattedUserInput.get();
+            final Optional<Integer> optionalNumeral = stringNumeralToIntegerNumeralConverter.convert(formattedUserInput);
+            if (optionalNumeral.isPresent()) {
+                final Integer numeral = optionalNumeral.get();
+                final boolean numeralIsValid = numeralValidator.numeralIsValid(numeral);
 
-        if (optionalNumeral.isPresent()) {
-            final Integer numeral = optionalNumeral.get();
-            final boolean numeralIsValid = numeralValidator.numeralIsValid(numeral);
-
-            if (numeralIsValid) {
-                log.info("Converting {} to Roman numeral.", numeral);
-                final String numeralAsRomanNumeral = romanNumeralGenerator.generate(numeral);
-                log.info("******************************");
-                log.info("{} is '{}' in Roman numerals.", numeral, numeralAsRomanNumeral);
-                log.info("******************************");
+                if (numeralIsValid) {
+                    log.info("Converting {} to Roman numeral.", numeral);
+                    final String numeralAsRomanNumeral = romanNumeralGenerator.generate(numeral);
+                    romanNumeralResultPrinter.print(numeralAsRomanNumeral);
+                } else {
+                    log.error("Number is not valid. ");
+                }
             } else {
-                log.error("Number is not valid. ");
+                log.error("Cannot convert User Input to Integer.");
             }
         } else {
-            log.error("Cannot convert {} to Integer.", formattedNumberToConvert);
+            log.error("Cannot format User Input.");
         }
     }
 }
