@@ -9,4 +9,6 @@ import org.springframework.context.annotation.Configuration;
 @Data
 public class ApplicationProperties {
     private String numberToConvert;
+    private int lowerBound;
+    private int upperBound;
 }
