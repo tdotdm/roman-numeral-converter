@@ -1,10 +1,10 @@
 package com.example.romannumeralconverter.core;
 
 import com.example.romannumeralconverter.core.configuration.ApplicationProperties;
-import com.example.romannumeralconverter.core.numeral.NumeralFormatter;
 import com.example.romannumeralconverter.core.numeral.NumeralValidator;
 import com.example.romannumeralconverter.core.numeral.RomanNumeralGenerator;
 import com.example.romannumeralconverter.core.numeral.StringNumeralToIntegerNumeralConverter;
+import com.example.romannumeralconverter.core.numeral.UserInputFormatter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
@@ -17,7 +17,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class StartupListener implements CommandLineRunner {
     private final ApplicationProperties applicationProperties;
-    private final NumeralFormatter numeralFormatter;
+    private final UserInputFormatter userInputFormatter;
     private final StringNumeralToIntegerNumeralConverter stringNumeralToIntegerNumeralConverter;
     private final NumeralValidator numeralValidator;
     private final RomanNumeralGenerator romanNumeralGenerator;
@@ -25,7 +25,7 @@ public class StartupListener implements CommandLineRunner {
     @Override
     public void run(final String... args) {
         final String numberToConvert = applicationProperties.getNumberToConvert();
-        final String formattedNumberToConvert = numeralFormatter.format(numberToConvert);
+        final String formattedNumberToConvert = userInputFormatter.format(numberToConvert);
         final Optional<Integer> optionalNumeral = stringNumeralToIntegerNumeralConverter.convert(formattedNumberToConvert);
 
         if (optionalNumeral.isPresent()) {

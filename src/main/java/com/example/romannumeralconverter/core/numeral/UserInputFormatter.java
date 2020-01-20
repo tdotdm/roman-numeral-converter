@@ -5,12 +5,12 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Slf4j
-public class NumeralFormatter {
+public class UserInputFormatter {
     private static final String LEADING_ZEROES = "^0+(?!$)";
 
     public String format(final String numeral) {
         log.info("Removing leading zeroes from numeral.");
-        
+
         return numeral.replaceFirst(LEADING_ZEROES, "");
     }
 }
