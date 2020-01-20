@@ -11,4 +11,14 @@ public class ThousandPlaceValue extends PlaceValue {
 
         return new ThousandPlaceValue(integerPlaceValue);
     }
+
+    @Override
+    public String getRomanNumeral() {
+        final StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < this.value; i++) {
+            stringBuilder.append(RomanNumeral.M.getKey());
+        }
+
+        return stringBuilder.toString();
+    }
 }
