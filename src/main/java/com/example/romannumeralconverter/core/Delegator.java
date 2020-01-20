@@ -1,6 +1,6 @@
 package com.example.romannumeralconverter.core;
 
-import com.example.romannumeralconverter.core.numeral.NumeralValidator;
+import com.example.romannumeralconverter.core.numeral.NumberValidator;
 import com.example.romannumeralconverter.core.numeral.RomanNumeralGenerator;
 import com.example.romannumeralconverter.core.numeral.RomanNumeralPrinter;
 import com.example.romannumeralconverter.core.numeral.StringNumeralToIntegerNumeralConverter;
@@ -15,7 +15,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class Delegator {
     private final StringNumeralToIntegerNumeralConverter stringNumeralToIntegerNumeralConverter;
-    private final NumeralValidator numeralValidator;
+    private final NumberValidator numberValidator;
     private final RomanNumeralGenerator romanNumeralGenerator;
     private final RomanNumeralPrinter romanNumeralPrinter;
 
@@ -23,7 +23,7 @@ public class Delegator {
         final Optional<Integer> optionalNumberToConvert = stringNumeralToIntegerNumeralConverter.convert(userInput);
         if (optionalNumberToConvert.isPresent()) {
             final Integer numberToConvert = optionalNumberToConvert.get();
-            final boolean numberIsValid = numeralValidator.numeralIsValid(numberToConvert);
+            final boolean numberIsValid = numberValidator.numberIsValid(numberToConvert);
 
             if (numberIsValid) {
                 log.info("Converting {} to Roman numeral.", numberToConvert);
