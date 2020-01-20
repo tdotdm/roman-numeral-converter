@@ -16,10 +16,13 @@ public class NumberValidator {
     }
 
     public boolean numberIsValid(final int numberToConvert) {
+        log.info("Checking to see if number is valid...");
         if (numberToConvert == 0) {
+            log.error("Number is not valid!");
             return false;
         }
 
+        log.info("Number is valid.");
         return numberToConvert >= lowerBound && numberToConvert <= upperBound;
     }
 }
