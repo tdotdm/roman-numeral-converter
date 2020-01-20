@@ -12,7 +12,7 @@ public abstract class PlaceValue {
 
     abstract String getRomanNumeral();
 
-    Integer getValue() {
+    public Integer getValue() {
         return this.value;
     }
 }
