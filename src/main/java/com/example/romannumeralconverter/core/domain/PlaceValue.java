@@ -11,4 +11,8 @@ public abstract class PlaceValue {
     }
 
     abstract String getRomanNumeral();
+
+    Integer getValue() {
+        return this.value;
+    }
 }
