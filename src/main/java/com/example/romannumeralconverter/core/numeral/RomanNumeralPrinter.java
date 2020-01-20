@@ -1,5 +1,5 @@
 package com.example.romannumeralconverter.core.numeral;
 
-public interface RomanNumeralResultPrinter {
+public interface RomanNumeralPrinter {
     void print(String romanNumeral);
 }

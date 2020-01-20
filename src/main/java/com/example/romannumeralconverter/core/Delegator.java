@@ -2,7 +2,7 @@ package com.example.romannumeralconverter.core;
 
 import com.example.romannumeralconverter.core.numeral.NumeralValidator;
 import com.example.romannumeralconverter.core.numeral.RomanNumeralGenerator;
-import com.example.romannumeralconverter.core.numeral.RomanNumeralResultPrinter;
+import com.example.romannumeralconverter.core.numeral.RomanNumeralPrinter;
 import com.example.romannumeralconverter.core.numeral.StringNumeralToIntegerNumeralConverter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,7 +17,7 @@ public class Delegator {
     private final StringNumeralToIntegerNumeralConverter stringNumeralToIntegerNumeralConverter;
     private final NumeralValidator numeralValidator;
     private final RomanNumeralGenerator romanNumeralGenerator;
-    private final RomanNumeralResultPrinter romanNumeralResultPrinter;
+    private final RomanNumeralPrinter romanNumeralPrinter;
 
     public void delegate(final String userInput) {
         final Optional<Integer> optionalNumberToConvert = stringNumeralToIntegerNumeralConverter.convert(userInput);
@@ -28,7 +28,7 @@ public class Delegator {
             if (numberIsValid) {
                 log.info("Converting {} to Roman numeral.", numberToConvert);
                 final String romanNumeral = romanNumeralGenerator.generate(numberToConvert);
-                romanNumeralResultPrinter.print(romanNumeral);
+                romanNumeralPrinter.print(romanNumeral);
             } else {
                 log.error("Number is not valid.");
             }

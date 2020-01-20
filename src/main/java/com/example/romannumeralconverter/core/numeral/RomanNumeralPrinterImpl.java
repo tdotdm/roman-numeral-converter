@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Slf4j
-public class RomanNumeralResultPrinterImpl implements RomanNumeralResultPrinter {
+public class RomanNumeralPrinterImpl implements RomanNumeralPrinter {
     @Override
     public void print(final String romanNumeral) {
         log.info("******************************");
