@@ -20,7 +20,6 @@ public class NumberValidator {
             return false;
         }
 
-        final double roundedUpNumberToConvert = Math.round(numberToConvert);
-        return roundedUpNumberToConvert >= lowerBound && roundedUpNumberToConvert <= upperBound;
+        return numberToConvert >= lowerBound && numberToConvert <= upperBound;
     }
 }
