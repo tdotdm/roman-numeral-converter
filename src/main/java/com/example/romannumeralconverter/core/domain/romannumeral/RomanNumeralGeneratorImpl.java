@@ -11,6 +11,9 @@ public class RomanNumeralGeneratorImpl implements RomanNumeralGenerator {
      * From the given number,
      * generate and return
      * the appropriate Roman numeral.
+     *
+     * Note: this method will operate on
+     * a number range of 1 - 3999.
      * */
     @Override
     public String generate(final int number) {
