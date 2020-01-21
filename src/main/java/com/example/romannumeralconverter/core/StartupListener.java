@@ -24,7 +24,11 @@ public class StartupListener implements CommandLineRunner {
 
         if (optionalFormattedUserInput.isPresent()) {
             final String userInput = optionalFormattedUserInput.get();
-            delegator.delegate(userInput);
+            try {
+                delegator.delegate(userInput);
+            } catch (final ServiceException e) {
+                //ignore
+            }
         }
     }
 }

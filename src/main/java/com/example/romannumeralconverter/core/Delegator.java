@@ -17,7 +17,7 @@ public class Delegator {
     private final RequestValidator requestValidator;
     private final RomanNumeralGenerator romanNumeralGenerator;
 
-    public void delegate(final String numberRequest) {
+    public void delegate(final String numberRequest) throws ServiceException {
         final Optional<Integer> optionalNumberToConvert = stringToIntegerConverter.convert(numberRequest);
         if (optionalNumberToConvert.isPresent()) {
             final Integer numberToConvert = optionalNumberToConvert.get();
