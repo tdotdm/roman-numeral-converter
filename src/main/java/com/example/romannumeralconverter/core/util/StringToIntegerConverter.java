@@ -1,4 +1,4 @@
-package com.example.romannumeralconverter.core.domain.request;
+package com.example.romannumeralconverter.core.util;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
