@@ -1,5 +1,6 @@
 # Roman Numeral Converter
 Roman Numeral Converter is a Java / Spring Boot application which converts numbers to standard Roman numeral notation.
+You can read more about Roman numerals and its standard notation [here](https://en.wikipedia.org/wiki/Roman_numerals#%22Standard%22_forms).
 #### Approach
 When researching Roman numerals, I noticed that each place value (units, tens, hundreds and thousands)
 has the same pattern in generating Roman numerals. For example, the first three iterations of any given place value will be 
