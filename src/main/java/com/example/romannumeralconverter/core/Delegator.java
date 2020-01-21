@@ -17,8 +17,8 @@ public class Delegator {
     private final NumberRequestValidator numberRequestValidator;
     private final RomanNumeralGenerator romanNumeralGenerator;
 
-    public void delegate(final String userInput) {
-        final Optional<Integer> optionalNumberToConvert = stringToIntegerConverter.convert(userInput);
+    public void delegate(final String numberRequest) {
+        final Optional<Integer> optionalNumberToConvert = stringToIntegerConverter.convert(numberRequest);
         if (optionalNumberToConvert.isPresent()) {
             final Integer numberToConvert = optionalNumberToConvert.get();
             final boolean numberIsValid = numberRequestValidator.numberIsValid(numberToConvert);
@@ -30,10 +30,10 @@ public class Delegator {
                 log.info(romanNumeral);
                 log.info("******************************");
             } else {
-                log.error("Number is not valid.");
+                log.error("Number is not valid and cannot be converted.");
             }
         } else {
-            log.error("Cannot convert {} to Integer.", userInput);
+            log.error("Cannot convert {} to Integer.", numberRequest);
         }
     }
 }
