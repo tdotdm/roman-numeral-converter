@@ -50,6 +50,16 @@ public class RomanNumeralGeneratorImpl implements RomanNumeralGenerator {
         return stringBuilder.toString();
     }
 
+    /*
+     * The pattern for Roman numerals is identical across
+     * all place values, which can therefore be
+     * expressed through the following method.
+     *
+     * Note: when working with Thousand, the limit is
+     * MMM but at this point in the application, the
+     * User's input should be validated and rejected if
+     * appropriate.
+     * */
     private String getRomanNumeral(final PlaceValue placeValue) {
         final StringBuilder stringBuilder = new StringBuilder();
         final String lowerKey = placeValue.getLowerKey(); //lowerKey i.e. I,
