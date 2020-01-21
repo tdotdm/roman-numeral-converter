@@ -22,7 +22,12 @@ public class NumberRequestValidator {
             return false;
         }
 
-        log.info("Number is valid...");
-        return numberToConvert >= lowerBound && numberToConvert <= upperBound;
+        final boolean valid = numberToConvert >= lowerBound && numberToConvert <= upperBound;
+        if (valid) {
+            log.info("Number is valid...");
+        } else {
+            log.error("Number is not valid!");
+        }
+        return valid;
     }
 }
