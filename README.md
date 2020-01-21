@@ -21,7 +21,7 @@ The application is built using Maven, and can therefore be built by yourself usi
  
 * First, clone the repository.
 * Second, navigate to the project's root directory, and execute the command "mvn clean install". If you do not have
-Maven installed, you can use the "mvnw" or "mvnw.cmd" files depending on your OS. 
+Maven installed, you can use the Maven wrapper files ("mvnw" or "mvnw.cmd") depending on your OS. 
 #### Running the application
 Once packaged/installed, the application can be started by running the Jar.
 
