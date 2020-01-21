@@ -2,7 +2,7 @@ package com.example.romannumeralconverter.core.domain;
 
 public class ThousandPlaceValue extends PlaceValue {
     protected ThousandPlaceValue(final Integer value) {
-        super(Rank.THOUSAND, value);
+        super(Rank.THOUSAND, value, RomanNumeral.M, null, null);
     }
 
     public static ThousandPlaceValue from(final Integer numberToConvert) {
@@ -10,15 +10,5 @@ public class ThousandPlaceValue extends PlaceValue {
         final int integerPlaceValue = (int) placeValue;
 
         return new ThousandPlaceValue(integerPlaceValue);
-    }
-
-    @Override
-    public String getRomanNumeral() {
-        final StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < this.value; i++) {
-            stringBuilder.append(RomanNumeral.M.getKey());
-        }
-
-        return stringBuilder.toString();
     }
 }
