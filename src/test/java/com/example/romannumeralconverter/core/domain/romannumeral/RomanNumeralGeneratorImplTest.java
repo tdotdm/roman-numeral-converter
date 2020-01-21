@@ -105,4 +105,14 @@ class RomanNumeralGeneratorImplTest {
         //then
         assertMatch(inputs, outputs);
     }
+
+    @Test
+    public void generate_ShouldReturnExpectedStrings_WhenGivenSample() {
+        //given
+        final List<Integer> inputs = List.of(1, 5, 10, 20, 3999);
+        final List<String> outputs = List.of("I", "V", "X", "XX", "MMMCMXCIX");
+
+        //then
+        assertMatch(inputs, outputs);
+    }
 }
