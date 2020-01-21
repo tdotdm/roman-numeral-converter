@@ -68,4 +68,32 @@ class RomanNumeralGeneratorImplTest {
             assertThat(result).isEqualTo(expectedResult);
         }
     }
+
+    @Test
+    public void generate_ShouldReturnExpectedStrings_WhenGivenHundreds() {
+        //given
+        final List<Integer> inputs = List.of(100, 211, 322, 433, 544, 655, 766, 877, 988, 999);
+        final List<String> outputs = List.of(
+                "C",
+                "CCXI",
+                "CCCXXII",
+                "CDXXXIII",
+                "DXLIV",
+                "DCLV",
+                "DCCLXVI",
+                "DCCCLXXVII",
+                "CMLXXXVIII",
+                "CMXCIX"
+        );
+
+        //when
+        final int inputsSize = inputs.size();
+        for (int x = 0; x < inputsSize; x++) {
+            final String result = target.generate(inputs.get(x));
+            final String expectedResult = outputs.get(x);
+
+            //then
+            assertThat(result).isEqualTo(expectedResult);
+        }
+    }
 }
