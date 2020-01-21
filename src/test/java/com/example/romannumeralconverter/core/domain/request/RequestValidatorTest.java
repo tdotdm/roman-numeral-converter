@@ -1,4 +1,4 @@
-package com.example.romannumeralconverter.core.numeral;
+package com.example.romannumeralconverter.core.domain.request;
 
 import com.example.romannumeralconverter.core.configuration.ApplicationProperties;
 import com.example.romannumeralconverter.core.domain.request.RequestValidator;
