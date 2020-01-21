@@ -20,20 +20,24 @@ public class Delegator {
     private final RomanNumeralGenerator romanNumeralGenerator;
 
     public String delegate(final String numberToConvert) throws ServiceException {
+        log.info("Application will attempt to convert '{}' to Roman numerals.", numberToConvert);
         final Optional<String> optionalFormattedNumberToConvert = requestFormatter.format(numberToConvert);
         if (optionalFormattedNumberToConvert.isEmpty()) {
+            log.error("An error occurred whilst formatting String.");
             throw new ServiceException("Cannot format String.");
         }
 
         final String formattedNumberToConvert = optionalFormattedNumberToConvert.get();
         final Optional<Integer> optionalNumberToConvert = stringToIntegerConverter.convert(formattedNumberToConvert);
         if (optionalNumberToConvert.isEmpty()) {
+            log.error("An error occurred whilst converting formatted String to Integer.");
             throw new ServiceException("Cannot convert String to Integer.");
         }
 
         final Integer number = optionalNumberToConvert.get();
         final boolean numberIsValid = requestValidator.numberIsValid(number);
         if (!numberIsValid) {
+            log.error("Integer is not valid - are you sure it is within the lower and upper boundary?");
             throw new ServiceException("Integer is not valid.");
         }
 
