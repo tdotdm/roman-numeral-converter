@@ -7,6 +7,11 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 public class RomanNumeralGeneratorImpl implements RomanNumeralGenerator {
+    /*
+     * From the given number,
+     * generate and return
+     * the appropriate Roman numeral.
+     * */
     @Override
     public String generate(final int number) {
         if (number == 0) {
