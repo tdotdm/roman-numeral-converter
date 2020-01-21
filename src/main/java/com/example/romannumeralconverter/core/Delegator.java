@@ -1,7 +1,7 @@
 package com.example.romannumeralconverter.core;
 
-import com.example.romannumeralconverter.core.domain.numberrequest.NumberRequestValidator;
-import com.example.romannumeralconverter.core.domain.numberrequest.StringToIntegerConverter;
+import com.example.romannumeralconverter.core.domain.request.RequestValidator;
+import com.example.romannumeralconverter.core.domain.request.StringToIntegerConverter;
 import com.example.romannumeralconverter.core.domain.romannumeral.RomanNumeralGenerator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -14,14 +14,14 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class Delegator {
     private final StringToIntegerConverter stringToIntegerConverter;
-    private final NumberRequestValidator numberRequestValidator;
+    private final RequestValidator requestValidator;
     private final RomanNumeralGenerator romanNumeralGenerator;
 
     public void delegate(final String numberRequest) {
         final Optional<Integer> optionalNumberToConvert = stringToIntegerConverter.convert(numberRequest);
         if (optionalNumberToConvert.isPresent()) {
             final Integer numberToConvert = optionalNumberToConvert.get();
-            final boolean numberIsValid = numberRequestValidator.numberIsValid(numberToConvert);
+            final boolean numberIsValid = requestValidator.numberIsValid(numberToConvert);
 
             if (numberIsValid) {
                 log.info("Converting {} to Roman numeral.", numberToConvert);

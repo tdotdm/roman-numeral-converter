@@ -1,17 +1,17 @@
 package com.example.romannumeralconverter.core.numeral;
 
-import com.example.romannumeralconverter.core.domain.numberrequest.NumberRequestFormatter;
+import com.example.romannumeralconverter.core.domain.request.RequestFormatter;
 import org.junit.jupiter.api.Test;
 
 import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-class NumberRequestFormatterTest {
+class RequestFormatterTest {
     /*
      * Test subject.
      * */
-    private final NumberRequestFormatter target = new NumberRequestFormatter();
+    private final RequestFormatter target = new RequestFormatter();
 
     @Test
     public void format_ShouldReturnEmptyOptional_WhenGivenNull() {

@@ -1,17 +1,17 @@
 package com.example.romannumeralconverter.core.numeral;
 
 import com.example.romannumeralconverter.core.configuration.ApplicationProperties;
-import com.example.romannumeralconverter.core.domain.numberrequest.NumberRequestValidator;
+import com.example.romannumeralconverter.core.domain.request.RequestValidator;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-class NumberRequestValidatorTest {
+class RequestValidatorTest {
     /*
      * Test subject
      * */
     private final ApplicationProperties applicationProperties = newApplicationProperties(1, 3999);
-    private final NumberRequestValidator target = new NumberRequestValidator(applicationProperties);
+    private final RequestValidator target = new RequestValidator(applicationProperties);
 
     /*
      * Util

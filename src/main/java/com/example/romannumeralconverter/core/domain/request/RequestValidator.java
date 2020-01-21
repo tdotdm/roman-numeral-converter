@@ -1,4 +1,4 @@
-package com.example.romannumeralconverter.core.domain.numberrequest;
+package com.example.romannumeralconverter.core.domain.request;
 
 import com.example.romannumeralconverter.core.configuration.ApplicationProperties;
 import lombok.extern.slf4j.Slf4j;
@@ -6,11 +6,11 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Slf4j
-public class NumberRequestValidator {
+public class RequestValidator {
     private final int lowerBound;
     private final int upperBound;
 
-    public NumberRequestValidator(final ApplicationProperties applicationProperties) {
+    public RequestValidator(final ApplicationProperties applicationProperties) {
         this.lowerBound = applicationProperties.getLowerBound();
         this.upperBound = applicationProperties.getUpperBound();
     }
