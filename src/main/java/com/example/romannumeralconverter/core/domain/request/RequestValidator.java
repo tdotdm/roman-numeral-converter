@@ -15,6 +15,12 @@ public class RequestValidator {
         this.upperBound = applicationProperties.getUpperBound();
     }
 
+    /*
+     * Validate the User's input against the
+     * configured lower and upper bound. If the
+     * User's input is outwith the boundary range,
+     * then the number is not valid.
+     * */
     public boolean validate(final int numberToConvert) {
         if (numberToConvert == 0) {
             return false;
