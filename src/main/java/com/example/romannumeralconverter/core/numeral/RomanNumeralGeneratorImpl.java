@@ -1,41 +1,47 @@
 package com.example.romannumeralconverter.core.numeral;
 
 import com.example.romannumeralconverter.core.domain.*;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Component
+@RequiredArgsConstructor
 public class RomanNumeralGeneratorImpl implements RomanNumeralGenerator {
+    private final RomanNumeralServiceImpl romanNumeralServiceImpl;
+
     @Override
     public String generate(final int number) {
         if (number == 0) {
             throw new IllegalArgumentException("Cannot convert number to Roman numeral!");
         }
 
-        final List<PlaceValue> placeValues = new ArrayList<>();
+        final StringBuilder stringBuilder = new StringBuilder();
         final int numberLength = String.valueOf(number).length();
         if (numberLength > 3) {
             final ThousandPlaceValue placeValue = ThousandPlaceValue.from(number);
-            placeValues.add(placeValue);
+            final String romanNumeral = romanNumeralServiceImpl.getRomanNumeral(placeValue);
+            stringBuilder.append(romanNumeral);
         }
 
         if (numberLength > 2) {
             final HundredPlaceValue placeValue = HundredPlaceValue.from(number);
-            placeValues.add(placeValue);
+            final String romanNumeral = romanNumeralServiceImpl.getRomanNumeral(placeValue);
+            stringBuilder.append(romanNumeral);
         }
 
         if (numberLength > 1) {
             final TenPlaceValue placeValue = TenPlaceValue.from(number);
-            placeValues.add(placeValue);
+            final String romanNumeral = romanNumeralServiceImpl.getRomanNumeral(placeValue);
+            stringBuilder.append(romanNumeral);
         }
 
         if (numberLength > 0) {
             final UnitPlaceValue placeValue = UnitPlaceValue.from(number);
-            placeValues.add(placeValue);
+            final String romanNumeral = romanNumeralServiceImpl.getRomanNumeral(placeValue);
+            stringBuilder.append(romanNumeral);
         }
 
-        return "todo";
+        final String romanNumeral = stringBuilder.toString();
+        return romanNumeral;
     }
 }
