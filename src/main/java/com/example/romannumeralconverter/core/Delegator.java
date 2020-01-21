@@ -19,6 +19,12 @@ public class Delegator {
     private final RequestValidator requestValidator;
     private final RomanNumeralGenerator romanNumeralGenerator;
 
+    /*
+     * Take the input from the User,
+     * and carry out various actions/checks
+     * before finally converting the User's
+     * input to Roman numeral format.
+     * */
     public String delegate(final String numberToConvert) throws ServiceException {
         log.info("Application will attempt to convert '{}' to Roman numerals.", numberToConvert);
         final Optional<String> optionalFormattedNumberToConvert = requestFormatter.format(numberToConvert);
