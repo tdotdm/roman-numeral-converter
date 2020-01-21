@@ -26,15 +26,20 @@ class RomanNumeralGeneratorImplTest {
         }
     }
 
+    private void assertExceptionThrown(final int input) {
+        //then
+        assertThatThrownBy(() -> {
+            target.generate(input);
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
+
     @Test
     public void generate_ShouldThrowException_WhenGivenZero() {
         //given
         final int input = 0;
 
         //then
-        assertThatThrownBy(() -> {
-            target.generate(input);
-        });
+        assertExceptionThrown(input);
     }
 
     @Test
@@ -43,9 +48,7 @@ class RomanNumeralGeneratorImplTest {
         final int input = -5;
 
         //then
-        assertThatThrownBy(() -> {
-            target.generate(input);
-        });
+        assertExceptionThrown(input);
     }
 
     @Test
@@ -54,9 +57,7 @@ class RomanNumeralGeneratorImplTest {
         final int input = 4000;
 
         //then
-        assertThatThrownBy(() -> {
-            target.generate(input);
-        });
+        assertExceptionThrown(input);
     }
 
     @Test
