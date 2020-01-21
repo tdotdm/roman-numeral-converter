@@ -13,6 +13,19 @@ class RomanNumeralGeneratorImplTest {
      * */
     private final RomanNumeralGeneratorImpl target = new RomanNumeralGeneratorImpl();
 
+    private void assertMatch(final List<Integer> inputs,
+                             final List<String> outputs) {
+        //when
+        final int inputsSize = inputs.size();
+        for (int x = 0; x < inputsSize; x++) {
+            final String result = target.generate(inputs.get(x));
+            final String expectedResult = outputs.get(x);
+
+            //then
+            assertThat(result).isEqualTo(expectedResult);
+        }
+    }
+
     @Test
     public void generate_ShouldThrowException_WhenGivenZero() {
         //given
@@ -30,15 +43,8 @@ class RomanNumeralGeneratorImplTest {
         final List<Integer> inputs = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
         final List<String> outputs = List.of("I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X");
 
-        //when
-        final int inputsSize = inputs.size();
-        for (int x = 0; x < inputsSize; x++) {
-            final String result = target.generate(inputs.get(x));
-            final String expectedResult = outputs.get(x);
-
-            //then
-            assertThat(result).isEqualTo(expectedResult);
-        }
+        //then
+        assertMatch(inputs, outputs);
     }
 
     @Test
@@ -58,15 +64,8 @@ class RomanNumeralGeneratorImplTest {
                 "XCIX"
         );
 
-        //when
-        final int inputsSize = inputs.size();
-        for (int x = 0; x < inputsSize; x++) {
-            final String result = target.generate(inputs.get(x));
-            final String expectedResult = outputs.get(x);
-
-            //then
-            assertThat(result).isEqualTo(expectedResult);
-        }
+        //then
+        assertMatch(inputs, outputs);
     }
 
     @Test
@@ -86,15 +85,8 @@ class RomanNumeralGeneratorImplTest {
                 "CMXCIX"
         );
 
-        //when
-        final int inputsSize = inputs.size();
-        for (int x = 0; x < inputsSize; x++) {
-            final String result = target.generate(inputs.get(x));
-            final String expectedResult = outputs.get(x);
-
-            //then
-            assertThat(result).isEqualTo(expectedResult);
-        }
+        //then
+        assertMatch(inputs, outputs);
     }
 
     @Test
@@ -110,14 +102,7 @@ class RomanNumeralGeneratorImplTest {
                 "MMM", "MMMIII", "MMMXXXIII", "MMMCCCXXXIII"
         );
 
-        //when
-        final int inputsSize = inputs.size();
-        for (int x = 0; x < inputsSize; x++) {
-            final String result = target.generate(inputs.get(x));
-            final String expectedResult = outputs.get(x);
-
-            //then
-            assertThat(result).isEqualTo(expectedResult);
-        }
+        //then
+        assertMatch(inputs, outputs);
     }
 }
