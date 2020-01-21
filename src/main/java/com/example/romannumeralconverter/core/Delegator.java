@@ -1,5 +1,6 @@
 package com.example.romannumeralconverter.core;
 
+import com.example.romannumeralconverter.core.domain.request.RequestFormatter;
 import com.example.romannumeralconverter.core.domain.request.RequestValidator;
 import com.example.romannumeralconverter.core.domain.request.StringToIntegerConverter;
 import com.example.romannumeralconverter.core.domain.romannumeral.RomanNumeralGenerator;
@@ -14,26 +15,28 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class Delegator {
     private final StringToIntegerConverter stringToIntegerConverter;
+    private final RequestFormatter requestFormatter;
     private final RequestValidator requestValidator;
     private final RomanNumeralGenerator romanNumeralGenerator;
 
-    public void delegate(final String numberRequest) throws ServiceException {
-        final Optional<Integer> optionalNumberToConvert = stringToIntegerConverter.convert(numberRequest);
-        if (optionalNumberToConvert.isPresent()) {
-            final Integer numberToConvert = optionalNumberToConvert.get();
-            final boolean numberIsValid = requestValidator.numberIsValid(numberToConvert);
-
-            if (numberIsValid) {
-                log.info("Converting {} to Roman numeral.", numberToConvert);
-                final String romanNumeral = romanNumeralGenerator.generate(numberToConvert);
-                log.info("******************************");
-                log.info(romanNumeral);
-                log.info("******************************");
-            } else {
-                log.error("Number is not valid and cannot be converted.");
-            }
-        } else {
-            log.error("Cannot convert {} to Integer.", numberRequest);
+    public String delegate(final String numberToConvert) throws ServiceException {
+        final Optional<String> optionalFormattedNumberToConvert = requestFormatter.format(numberToConvert);
+        if (optionalFormattedNumberToConvert.isEmpty()) {
+            throw new ServiceException("Cannot format String.");
         }
+
+        final String formattedNumberToConvert = optionalFormattedNumberToConvert.get();
+        final Optional<Integer> optionalNumberToConvert = stringToIntegerConverter.convert(formattedNumberToConvert);
+        if (optionalNumberToConvert.isEmpty()) {
+            throw new ServiceException("Cannot convert String to Integer.");
+        }
+
+        final Integer number = optionalNumberToConvert.get();
+        final boolean numberIsValid = requestValidator.numberIsValid(number);
+        if (!numberIsValid) {
+            throw new ServiceException("Integer is not valid.");
+        }
+
+        return romanNumeralGenerator.generate(number);
     }
 }
