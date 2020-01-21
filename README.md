@@ -1,5 +1,5 @@
 # Roman Numeral Converter
-Roman Numeral Converter is an application which converts numbers to standard Roman numeral notation.
+Roman Numeral Converter is a Java / Spring Boot application which converts numbers to standard Roman numeral notation.
 #### Approach
 When researching Roman numerals, I noticed that each place value (units, tens, hundreds and thousands)
 has the same pattern in generating Roman numerals. For example, the first three iterations of any given place value will be 
@@ -11,9 +11,7 @@ The assumptions I made for this application are as follows:
 
 * Input exceeding 1 - 3999 lower/upper boundary range will not be supported as 1 - 3999 are the limits for standard Roman
 numeral notation. 
-* Input should be validated and should not be outwith the configured lower/upper boundary range. For example,
-the User can change the lower/upper boundary limit using 'lowerBound' and 'upperBound' command line arguments respectively, albeit, these
-values should not exceed 1 - 3999. 
+* Input should be validated and should not be outwith the configured lower/upper boundary range.
 * Leading zeroes should not affect the output. For example, the number 007 and 7 should both return the value 'VII'.
 * Users will input numbers in Integer format, i.e. 56 instead of fifty six.
 * Only whole numbers will be supported, i.e. 7.5 will be rejected.  
@@ -21,7 +19,8 @@ values should not exceed 1 - 3999.
 The application is built using Maven, and can therefore be built by yourself using Maven.
  
 * First, clone the repository.
-* Second, navigate to the project's root directory, and execute the command "mvn clean install".
+* Second, navigate to the project's root directory, and execute the command "mvn clean install". If you do not have
+Maven installed, you can use the "mvnw" or "mvnw.cmd" files depending on your OS. 
 #### Running the application
 Once packaged/installed, the application can be started by running the Jar.
 
@@ -36,4 +35,4 @@ is 0. Therefore, if this environment variable is not changed, the application wi
 * lowerBound - this controls the lowest possible value for numberToConvert, so long as it is not lower than 1. The default value
 for this environment variable is 1.
 * upperBound - this controls the highest possible value for numberToConvert, so long as it is not higher than 3999. 
-The default value for this environment variable is 3999. 
+The default value for this environment variable is 3999.
