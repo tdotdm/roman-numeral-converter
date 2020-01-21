@@ -1,4 +1,6 @@
-package com.example.romannumeralconverter.core.domain;
+package com.example.romannumeralconverter.core.domain.placevalue;
+
+import com.example.romannumeralconverter.core.domain.romannumeral.RomanNumeral;
 
 public class HundredPlaceValue extends PlaceValue {
     protected HundredPlaceValue(final Integer value) {

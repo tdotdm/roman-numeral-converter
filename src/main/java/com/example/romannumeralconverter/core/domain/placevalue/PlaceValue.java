@@ -1,4 +1,6 @@
-package com.example.romannumeralconverter.core.domain;
+package com.example.romannumeralconverter.core.domain.placevalue;
+
+import com.example.romannumeralconverter.core.domain.romannumeral.RomanNumeral;
 
 public abstract class PlaceValue {
     protected final Rank rank; //i.e. Thousands

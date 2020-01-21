@@ -1,10 +1,10 @@
-package com.example.romannumeralconverter.core.domain;
+package com.example.romannumeralconverter.core.domain.romannumeral;
 
+import com.example.romannumeralconverter.core.domain.placevalue.PlaceValue;
 import org.springframework.stereotype.Component;
 
 @Component
 public class RomanNumeralServiceImpl implements RomanNumeralService {
-
     @Override
     public String getRomanNumeral(final PlaceValue placeValue) {
         final StringBuilder stringBuilder = new StringBuilder();

@@ -1,6 +1,9 @@
-package com.example.romannumeralconverter.core.numeral;
+package com.example.romannumeralconverter.core.domain.romannumeral;
 
-import com.example.romannumeralconverter.core.domain.*;
+import com.example.romannumeralconverter.core.domain.placevalue.HundredPlaceValue;
+import com.example.romannumeralconverter.core.domain.placevalue.TenPlaceValue;
+import com.example.romannumeralconverter.core.domain.placevalue.ThousandPlaceValue;
+import com.example.romannumeralconverter.core.domain.placevalue.UnitPlaceValue;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -41,7 +44,6 @@ public class RomanNumeralGeneratorImpl implements RomanNumeralGenerator {
             stringBuilder.append(romanNumeral);
         }
 
-        final String romanNumeral = stringBuilder.toString();
-        return romanNumeral;
+        return stringBuilder.toString();
     }
 }

@@ -1,9 +1,8 @@
 package com.example.romannumeralconverter.core;
 
-import com.example.romannumeralconverter.core.numeral.NumberValidator;
-import com.example.romannumeralconverter.core.numeral.RomanNumeralGenerator;
-import com.example.romannumeralconverter.core.numeral.RomanNumeralPrinter;
-import com.example.romannumeralconverter.core.numeral.StringToIntegerConverter;
+import com.example.romannumeralconverter.core.domain.numberrequest.NumberRequestValidator;
+import com.example.romannumeralconverter.core.domain.numberrequest.StringToIntegerConverter;
+import com.example.romannumeralconverter.core.domain.romannumeral.RomanNumeralGenerator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -15,20 +14,21 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class Delegator {
     private final StringToIntegerConverter stringToIntegerConverter;
-    private final NumberValidator numberValidator;
+    private final NumberRequestValidator numberRequestValidator;
     private final RomanNumeralGenerator romanNumeralGenerator;
-    private final RomanNumeralPrinter romanNumeralPrinter;
 
     public void delegate(final String userInput) {
         final Optional<Integer> optionalNumberToConvert = stringToIntegerConverter.convert(userInput);
         if (optionalNumberToConvert.isPresent()) {
             final Integer numberToConvert = optionalNumberToConvert.get();
-            final boolean numberIsValid = numberValidator.numberIsValid(numberToConvert);
+            final boolean numberIsValid = numberRequestValidator.numberIsValid(numberToConvert);
 
             if (numberIsValid) {
                 log.info("Converting {} to Roman numeral.", numberToConvert);
                 final String romanNumeral = romanNumeralGenerator.generate(numberToConvert);
-                romanNumeralPrinter.print(romanNumeral);
+                log.info("******************************");
+                log.info(romanNumeral);
+                log.info("******************************");
             } else {
                 log.error("Number is not valid.");
             }

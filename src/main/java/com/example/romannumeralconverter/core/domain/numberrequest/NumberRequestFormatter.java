@@ -1,4 +1,4 @@
-package com.example.romannumeralconverter.core.numeral;
+package com.example.romannumeralconverter.core.domain.numberrequest;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -7,7 +7,7 @@ import java.util.Optional;
 
 @Component
 @Slf4j
-public class UserInputFormatter {
+public class NumberRequestFormatter {
     private static final String LEADING_ZEROES = "^0+(?!$)";
 
     public Optional<String> format(final String userInput) {
