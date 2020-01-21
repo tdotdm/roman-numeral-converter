@@ -35,7 +35,7 @@ public class Delegator {
         }
 
         final int number = optionalNumberToConvert.get();
-        final boolean numberIsValid = requestValidator.numberIsValid(number);
+        final boolean numberIsValid = requestValidator.validate(number);
         if (!numberIsValid) {
             log.error("Integer is not valid - are you sure it is within the lower and upper boundary?");
             throw new ServiceException("Integer is not valid.");

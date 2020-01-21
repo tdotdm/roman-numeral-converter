@@ -15,7 +15,7 @@ public class RequestValidator {
         this.upperBound = applicationProperties.getUpperBound();
     }
 
-    public boolean numberIsValid(final int numberToConvert) {
+    public boolean validate(final int numberToConvert) {
         if (numberToConvert == 0) {
             return false;
         }

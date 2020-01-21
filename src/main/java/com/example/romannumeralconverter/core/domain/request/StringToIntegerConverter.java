@@ -8,9 +8,9 @@ import java.util.Optional;
 @Component
 @Slf4j
 public class StringToIntegerConverter {
-    public Optional<Integer> convert(final String input) {
+    public Optional<Integer> convert(final String numberToConvert) {
         try {
-            final int inputAsInteger = Integer.parseInt(input);
+            final int inputAsInteger = Integer.parseInt(numberToConvert);
             return Optional.of(inputAsInteger);
         } catch (final NumberFormatException e) {
             return Optional.empty();

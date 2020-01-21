@@ -15,8 +15,8 @@ public enum RomanNumeral {
     private final String key;
     private final Integer value;
 
-    private RomanNumeral(final String key,
-                         final int value) {
+    RomanNumeral(final String key,
+                 final int value) {
         this.key = key;
         this.value = value;
     }

@@ -10,7 +10,7 @@ public class RomanNumeralGeneratorImpl implements RomanNumeralGenerator {
     @Override
     public String generate(final int number) {
         if (number == 0) {
-            throw new IllegalArgumentException("Cannot convert number to Roman numeral!");
+            throw new IllegalArgumentException("Illegal number!");
         }
 
         final StringBuilder stringBuilder = new StringBuilder();
