@@ -18,30 +18,27 @@ public class RomanNumeralGeneratorImpl implements RomanNumeralGenerator {
         if (numberLength > 0) {
             final UnitPlaceValue unitPlaceValue = UnitPlaceValue.from(number);
             final String unitRomanNumeral = getRomanNumeral(unitPlaceValue);
-            stringBuilder.append(unitRomanNumeral);
+            stringBuilder.insert(0, unitRomanNumeral);
 
             if (numberLength > 1) {
                 final TenPlaceValue tenPlaceValue = TenPlaceValue.from(number);
                 final String tenRomanNumeral = getRomanNumeral(tenPlaceValue);
-                stringBuilder.append(tenRomanNumeral);
+                stringBuilder.insert(0, tenRomanNumeral);
 
                 if (numberLength > 2) {
                     final HundredPlaceValue hundredPlaceValue = HundredPlaceValue.from(number);
                     final String hundredRomanNumeral = getRomanNumeral(hundredPlaceValue);
-                    stringBuilder.append(hundredRomanNumeral);
+                    stringBuilder.insert(0, hundredRomanNumeral);
 
                     if (numberLength > 3) {
                         final ThousandPlaceValue thousandPlaceValue = ThousandPlaceValue.from(number);
                         final String thousandRomanNumeral = getRomanNumeral(thousandPlaceValue);
-                        stringBuilder.append(thousandRomanNumeral);
+                        stringBuilder.insert(0, thousandRomanNumeral);
                     }
                 }
             }
         }
 
-        //String is built lowest-highest.
-        //We want highest-lowest.
-        stringBuilder.reverse();
         return stringBuilder.toString();
     }
 

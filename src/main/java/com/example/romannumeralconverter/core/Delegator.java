@@ -34,7 +34,7 @@ public class Delegator {
             throw new ServiceException("Cannot convert String to Integer.");
         }
 
-        final Integer number = optionalNumberToConvert.get();
+        final int number = optionalNumberToConvert.get();
         final boolean numberIsValid = requestValidator.numberIsValid(number);
         if (!numberIsValid) {
             log.error("Integer is not valid - are you sure it is within the lower and upper boundary?");
