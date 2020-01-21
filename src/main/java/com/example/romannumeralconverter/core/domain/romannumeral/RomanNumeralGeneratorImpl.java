@@ -17,7 +17,7 @@ public class RomanNumeralGeneratorImpl implements RomanNumeralGenerator {
      * */
     @Override
     public String generate(final int number) {
-        if (number == 0) {
+        if (number < 1 || number > 3999) {
             throw new IllegalArgumentException("Illegal number!");
         }
 

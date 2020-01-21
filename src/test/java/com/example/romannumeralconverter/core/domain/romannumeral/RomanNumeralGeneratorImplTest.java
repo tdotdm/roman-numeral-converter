@@ -38,6 +38,28 @@ class RomanNumeralGeneratorImplTest {
     }
 
     @Test
+    public void generate_ShouldThrowException_WhenGivenLessThanLowerLimit() {
+        //given
+        final int input = -5;
+
+        //then
+        assertThatThrownBy(() -> {
+            target.generate(input);
+        });
+    }
+
+    @Test
+    public void generate_ShouldThrowException_WhenGivenMoreThanUpperLimit() {
+        //given
+        final int input = 4000;
+
+        //then
+        assertThatThrownBy(() -> {
+            target.generate(input);
+        });
+    }
+
+    @Test
     public void generate_ShouldReturnExpectedStrings_WhenGivenUnits() {
         //given
         final List<Integer> inputs = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
