@@ -15,9 +15,9 @@ class RomanNumeralGeneratorImplTest {
 
     private void assertMatch(final List<Integer> inputs,
                              final List<String> outputs) {
-        //when
         final int inputsSize = inputs.size();
         for (int x = 0; x < inputsSize; x++) {
+            //when
             final String result = target.generate(inputs.get(x));
             final String expectedResult = outputs.get(x);
 
