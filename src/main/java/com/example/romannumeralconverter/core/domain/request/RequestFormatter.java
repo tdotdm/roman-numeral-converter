@@ -10,12 +10,12 @@ import java.util.Optional;
 public class RequestFormatter {
     private static final String LEADING_ZEROES = "^0+(?!$)";
 
-    public Optional<String> format(final String userInput) {
-        if (userInput == null || userInput.isBlank()) {
+    public Optional<String> format(final String request) {
+        if (request == null || request.isBlank()) {
             return Optional.empty();
         }
 
-        final String formattedUserInput = userInput.replaceFirst(LEADING_ZEROES, "");
+        final String formattedUserInput = request.replaceFirst(LEADING_ZEROES, "");
         return Optional.of(formattedUserInput);
     }
 }
