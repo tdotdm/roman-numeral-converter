@@ -8,6 +8,10 @@ import java.util.Optional;
 @Component
 @Slf4j
 public class StringToIntegerConverter {
+    /*
+     * Convert the User's input from
+     * String format to Integer format.
+     * */
     public Optional<Integer> convert(final String numberToConvert) {
         try {
             final int inputAsInteger = Integer.parseInt(numberToConvert);
