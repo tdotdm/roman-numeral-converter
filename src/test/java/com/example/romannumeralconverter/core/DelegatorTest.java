@@ -10,7 +10,9 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Optional;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -41,13 +43,79 @@ class DelegatorTest {
         when(requestFormatter.format(any())).thenReturn(Optional.empty());
     }
 
+    private void givenRequestFormatterReturnsOptional(final String input) {
+        //given
+        when(requestFormatter.format(any())).thenReturn(Optional.of(input));
+    }
+
+    private void givenStringToIntegerConverterReturnsEmptyOptional() {
+        //given
+        when(stringToIntegerConverter.convert(any())).thenReturn(Optional.empty());
+    }
+
+    private void givenStringToIntegerConverterReturnsOptional(final int input) {
+        //given
+        when(stringToIntegerConverter.convert(any())).thenReturn(Optional.of(input));
+    }
+
+    private void givenRequestValidatorReturns(final boolean input) {
+        //given
+        when(requestValidator.validate(anyInt())).thenReturn(input);
+    }
+
+    private void givenRomanNumeralGeneratorReturns(final String result) {
+        //given
+        when(romanNumeralGenerator.generate(anyInt())).thenReturn(result);
+    }
+
     @Test
     public void delegate_ShouldThrowException_WhenGivenEmptyString() {
         //given
-        givenRequestFormatterReturnsEmptyOptional();
         final String input = "     ";
+        givenRequestFormatterReturnsEmptyOptional();
 
         //then
         assertExceptionThrown(input);
+    }
+
+    @Test
+    public void delegate_ShouldThrowException_WhenGivenStringThatCantBeInteger() {
+        //given
+        final String input = "test_data";
+        givenRequestFormatterReturnsOptional(input);
+        givenStringToIntegerConverterReturnsEmptyOptional();
+
+        //then
+        assertExceptionThrown(input);
+    }
+
+    @Test
+    public void delegate_ShouldThrowException_WhenGivenIntegerIsOutOfRange() {
+        //given
+        final String input = "4000";
+        givenRequestFormatterReturnsOptional(input);
+        givenStringToIntegerConverterReturnsOptional(4000);
+        givenRequestValidatorReturns(false);
+
+        //then
+        assertExceptionThrown(input);
+    }
+
+    @Test
+    public void delegate_ShouldReturnRomanNumeral_WhenGivenInputIsValid() throws ServiceException {
+        //given
+        final String input = "3999";
+        final String output = "MMMCMXCIX";
+
+        givenRequestFormatterReturnsOptional(input);
+        givenStringToIntegerConverterReturnsOptional(3999);
+        givenRequestValidatorReturns(true);
+        givenRomanNumeralGeneratorReturns(output);
+
+        //when
+        final String result = target.delegate(input);
+
+        //then
+        assertThat(result).isEqualTo(output);
     }
 }
