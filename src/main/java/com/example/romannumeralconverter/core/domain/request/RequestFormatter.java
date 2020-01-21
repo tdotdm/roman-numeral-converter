@@ -12,11 +12,9 @@ public class RequestFormatter {
 
     public Optional<String> format(final String userInput) {
         if (userInput == null || userInput.isBlank()) {
-            log.error("No valid User Input to format.");
             return Optional.empty();
         }
 
-        log.info("Formatting User Input.");
         final String formattedUserInput = userInput.replaceFirst(LEADING_ZEROES, "");
         return Optional.of(formattedUserInput);
     }
