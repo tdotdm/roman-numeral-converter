@@ -1,5 +1,6 @@
 package com.example.romannumeralconverter.core.numeral;
 
+import com.example.romannumeralconverter.core.domain.numberrequest.StringToIntegerConverter;
 import org.junit.jupiter.api.Test;
 
 import java.util.Optional;

@@ -1,4 +1,4 @@
-package com.example.romannumeralconverter.core.domain;
+package com.example.romannumeralconverter.core.domain.romannumeral;
 
 import lombok.Getter;
 
