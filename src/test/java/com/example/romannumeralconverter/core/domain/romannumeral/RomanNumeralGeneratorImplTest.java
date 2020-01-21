@@ -40,4 +40,32 @@ class RomanNumeralGeneratorImplTest {
             assertThat(result).isEqualTo(expectedResult);
         }
     }
+
+    @Test
+    public void generate_ShouldReturnExpectedStrings_WhenGivenTens() {
+        //given
+        final List<Integer> inputs = List.of(10, 21, 32, 43, 54, 65, 76, 87, 98, 99);
+        final List<String> outputs = List.of(
+                "X",
+                "XXI",
+                "XXXII",
+                "XLIII",
+                "LIV",
+                "LXV",
+                "LXXVI",
+                "LXXXVII",
+                "XCVIII",
+                "XCIX"
+        );
+
+        //when
+        final int inputsSize = inputs.size();
+        for (int x = 0; x < inputsSize; x++) {
+            final String result = target.generate(inputs.get(x));
+            final String expectedResult = outputs.get(x);
+
+            //then
+            assertThat(result).isEqualTo(expectedResult);
+        }
+    }
 }
