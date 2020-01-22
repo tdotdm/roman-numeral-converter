@@ -11,7 +11,7 @@
     </parent>
     <groupId>com.example</groupId>
     <artifactId>roman-numeral-converter</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>22.01.2020</version>
     <name>roman-numeral-converter</name>
     <description>Project space for converting numbers to Roman numerals.</description>
 
