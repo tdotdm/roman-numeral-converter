@@ -2,8 +2,9 @@ package com.example.romannumeralconverter.core;
 
 import com.example.romannumeralconverter.core.domain.request.RequestFormatter;
 import com.example.romannumeralconverter.core.domain.request.RequestValidator;
-import com.example.romannumeralconverter.core.domain.request.StringToIntegerConverter;
+import com.example.romannumeralconverter.core.util.StringToIntegerConverter;
 import com.example.romannumeralconverter.core.domain.romannumeral.RomanNumeralGenerator;
+import com.example.romannumeralconverter.core.util.ServiceException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
